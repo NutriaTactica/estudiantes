@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registro de Alumnos</title>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+    integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content box">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Registro de alumnos</h2>
+          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="alumno-form">
+            <input type="text" class="form-control" id="cedula" required pattern="[0-9]+" placeholder="Cedula" 
+              title="Ingresa una cedula válida (solo números)"> <br>
+            <input type="text" class="form-control" pattern="[a-zA-Z\s]+" placeholder="Nombre"
+              title="Ingresa un nombre válido (solo letras y espacios)" id="nombre" required><br>
+            <input type="number" class="form-control" id="matematicas" placeholder="Nota de Matematicas" min="0" max="20" required><br>
+            <input class="form-control" type="number" placeholder="Nota de Fisica" id="fisica" min="0" max="20" required><br>
+            <input class="form-control" type="number" id="programacion"  placeholder="Nota de Programacion" min="0" max="20" required>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" form="alumno-form" class="btn btn-primary" id="guardar-btn">Guardar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Registro de Alumnos</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Agregar Alumno
+        </button>
+        <table class="table table-dark" id="tabla-alumnos">
+          <thead>
+            <tr>
+              <th>Cedula</th>
+              <th>Nombre</th>
+              <th>Matematicas</th>
+              <th>Fisica</th>
+              <th>Programacion</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-alumnos">
+
+          </tbody>
+          <tfoot>
+            <tr class="total-row" style="display:none">
+              <th>Total</th>
+              <th></th>
+              <th id="total-matematicas"></th>
+              <th id="total-fisica"></th>
+              <th id="total-programacion"></th>
+            </tr>
+            <tr>
+              <th>Promedio</th>
+              <th></th>
+              <th id="promedio-matematicas"></th>
+              <th id="promedio-fisica"></th>
+              <th id="promedio-programacion"></th>
+            </tr>
+            <tr>
+              <th>Maxima Nota</th>
+              <th></th>
+              <th id="maxima-matematicas"></th>
+              <th id="maxima-fisica"></th>
+              <th id="maxima-programacion"></th>
+            </tr>
+            <tr>
+              <th>Aprobaron Todas las Materias</th>
+              <th id="aprobados-todas"></th>
+              <th colspan="3"></th>
+            </tr>
+            <tr>
+              <th>Aprobaron una Sola Materia</th>
+              <th id="aprobados-una"></th>
+              <th colspan="3"></th>
+            </tr>
+            <tr>
+              <th>Aprobaron Dos Materias</th>
+              <th id="aprobados-dos"></th>
+              <th colspan="3"></th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div>
+          <b>
+            <h2>Aprobados:</h2>
+          </b>
+          <b>
+          <div class="alert alert-dark" role="alert">Matematicas: <div id="aprobados-matematicas"></div> </div>
+          <div class="alert alert-dark" role="alert">Fisica: <div id="aprobados-fisica"></div></div>
+          <div class="alert alert-dark" role="alert">Programacion: <div id="aprobados-programacion"></div> </div>
+          </b>
+          <b>
+            <h2>Reprobados:</h2>
+          </b>
+          <b>
+            <div class="alert alert-dark" role="alert">Matematicas: <div id="reprobados-matematicas"></div> </div>
+            <div class="alert alert-dark" role="alert">Fisica: <div id="reprobados-fisica"></div> </div>
+            <div class="alert alert-dark" role="alert">Fisica: <div id="reprobados-programacion"></div> </div>
+          </b>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
